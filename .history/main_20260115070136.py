@@ -1,27 +1,10 @@
 from fastapi import FastAPI, Depends, HTTPException
-from fastapi.middleware.cors import CORSMiddleware  # <--- 1. NHỚ IMPORT DÒNG NÀY
 from pydantic import BaseModel
 from sqlalchemy import create_engine, Column, Integer, String, Float
 from sqlalchemy.orm import sessionmaker, Session, declarative_base
+from fastapi.middleware.cors import CORSMiddleware  # <--- 1. NHỚ IMPORT DÒNG NÀY
 
-# ... (Các phần import và code database giữ nguyên) ...
 
-app = FastAPI()
-
-# --- 2. THÊM ĐOẠN CẤU HÌNH CORS NÀY VÀO ---
-origins = [
-    "http://localhost:5173",    # Cổng mặc định của Vue (Vite)
-    "http://127.0.0.1:5173",
-]
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origins,      # Cho phép Vue truy cập
-    allow_credentials=True,
-    allow_methods=["*"],        # Cho phép mọi phương thức (GET, POST...)
-    allow_headers=["*"],
-)
-# -------------------------------------------
 # --- PHẦN 1: CẤU HÌNH DATABASE (SQLAlchemy) ---
 # Bạn thay: user, password, localhost, dbname bằng thông tin thật của bạn
 URL_DATABASE = "postgresql://postgres:123456@localhost/FastAPI_Demo"
@@ -71,7 +54,7 @@ def get_db():
 
 
 # --- PHẦN 5: API ENDPOINTS ---
-# app = FastAPI()
+app = FastAPI()
 
 
 @app.post("/them-mon")

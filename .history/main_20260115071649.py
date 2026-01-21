@@ -1,5 +1,4 @@
 from fastapi import FastAPI, Depends, HTTPException
-from fastapi.middleware.cors import CORSMiddleware  # <--- 1. NHỚ IMPORT DÒNG NÀY
 from pydantic import BaseModel
 from sqlalchemy import create_engine, Column, Integer, String, Float
 from sqlalchemy.orm import sessionmaker, Session, declarative_base
@@ -71,7 +70,7 @@ def get_db():
 
 
 # --- PHẦN 5: API ENDPOINTS ---
-# app = FastAPI()
+app = FastAPI()
 
 
 @app.post("/them-mon")

@@ -71,7 +71,7 @@ def get_db():
 
 
 # --- PHẦN 5: API ENDPOINTS ---
-# app = FastAPI()
+app = FastAPI()
 
 
 @app.post("/them-mon")
