@@ -4,7 +4,7 @@ import { ref, onMounted } from 'vue'
 const danhSachMon = ref([])
 const tenMonMoi = ref('')
 const giaMoi = ref(0)
-const API_URL = "http://127.0.0.1:8001" // Nhớ kiểm tra lại Port 8000 hay 8001
+const API_URL = "http://127.0.0.1:8000" // Nhớ kiểm tra lại Port 8000 hay 8001
 
 // ... (Hàm layDanhSach và themMon giữ nguyên như cũ) ...
 const layDanhSach = async () => {

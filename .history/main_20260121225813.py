@@ -92,19 +92,4 @@ def them_mon(mon: MonAnRequest, db: Session = Depends(get_db)):  # Dòng A
 def lay_danh_sach(db: Session = Depends(get_db)):
     danh_sach = db.query(MonAnDB).all()  # Dòng F
     return danh_sach
-# ... (Code cũ giữ nguyên)
 
-
-@app.delete("/xoa-mon/{mon_id}")
-def xoa_mon(mon_id: int, db: Session = Depends(get_db)):
-    # 1. Tìm món ăn theo ID
-    mon = db.query(MonAnDB).filter(MonAnDB.id == mon_id).first()
-
-    # 2. Nếu không thấy thì báo lỗi
-    if mon is None:
-        raise HTTPException(status_code=404, detail="Không tìm thấy món này")
-
-    # 3. Xóa và Lưu
-    db.delete(mon)
-    db.commit()
-    return {"thong_bao": "Đã xóa thành công"}
